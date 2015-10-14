@@ -11,17 +11,14 @@ public class UsingHashmapsProg {
 		Scanner sc = new Scanner(System.in);
 		int key;
 		String value, quit = "";
-		System.out.println("To quit enter 'n'.");
+		System.out.println("To quit enter 'n'.\n");
 
 		
 		while (!quit.equals("n")) {
-			System.out.print("Enter a number: ");
-			key = sc.nextInt();
+			key = Validator.getInt(sc, "Enter a number: " );
 			if (!newMap.getMyMap(key)) {
 				System.out.println("The number you entered was not found.");
-				System.out
-						.println("Please enter the word value of this number: ");
-				value = sc.next();
+				value = Validator.getString(sc, "Please enter the word value of this number: ");
 				value = Character.toUpperCase(value.charAt(0))
 						+ value.substring(1);
 				newMap.setMyMap(key, value);
@@ -29,9 +26,11 @@ public class UsingHashmapsProg {
 			}
 			System.out.print("Continue? ");
 			quit = sc.next().toLowerCase();
+			System.out.println("\n");
 			
 		}
 
+		newMap.writeNumberValue();
 		System.out.println("Program Ends.");
 		sc.close();
 
